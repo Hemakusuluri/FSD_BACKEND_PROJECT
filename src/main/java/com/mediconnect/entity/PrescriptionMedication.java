@@ -17,6 +17,7 @@ public class PrescriptionMedication {
 
     @ManyToOne
     @JoinColumn(name = "prescription_id", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private Prescription prescription;
 
     @Column(name = "medication_name", nullable = false)

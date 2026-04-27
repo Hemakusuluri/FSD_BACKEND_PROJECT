@@ -49,7 +49,8 @@ public class PrescriptionController {
             );
             return ResponseEntity.ok(prescription);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+            String errorMsg = e.getMessage() != null ? e.getMessage() : e.toString();
+            return ResponseEntity.badRequest().body(Map.of("error", errorMsg));
         }
     }
 

@@ -62,10 +62,10 @@ public class PrescriptionService {
                 med.setDosage(m.get("dosage").toString());
                 med.setFrequency(m.get("frequency").toString());
                 med.setDuration(m.get("duration").toString());
-                med.setQuantity(m.get("quantity") != null ? Integer.valueOf(m.get("quantity").toString()) : null);
-                med.setInstructions(m.get("instructions") != null ? m.get("instructions").toString() : null);
+                med.setQuantity(m.get("quantity") != null && !m.get("quantity").toString().trim().isEmpty() ? Integer.valueOf(m.get("quantity").toString()) : null);
+                med.setInstructions(m.get("instructions") != null && !m.get("instructions").toString().trim().isEmpty() ? m.get("instructions").toString() : null);
                 return med;
-            }).toList();
+            }).collect(java.util.stream.Collectors.toList());
             prescription.setMedications(meds);
         }
 
